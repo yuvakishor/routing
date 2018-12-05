@@ -1,0 +1,110 @@
+<div class="homepage" ng-controller="myCtrl">
+        <div class=" col-md-12 header">
+                <div class="col-md-6 exam">
+                        <a class="home fa fa-home" ui-sref="home">Home</a>
+                        <a class="start" ui-sref="start">start</a>
+                        <a class="subjects" ui-sref="subjects">subjects</a>
+                </div>
+                <div class="col-md-6 text-right">
+                        <button type="button" ui-sref="login">Login</button>
+                </div>
+
+        </div>
+        <h3>{{home}}</h3>
+        <div class="col-md-12">
+                <input ng-model="todoList" type="text" placeholder="Enter name here">
+                <input ng-model="country" type="text" placeholder="Enter country here">
+                <input ng-model="Email" type="text" placeholder="Enter Email here">
+                <button class="addbtn" ng-click="add(todoList,country,Email)">Add</button>
+                <button class="removebtn" ng-click="clearAll()">RemoveAll</button>
+                <button class="removeitem" ng-click="remove()">RemoveItems</button>
+        </div>
+
+        <div class="col-md-12" style="  padding: 11px 14px;">
+                <button class="example" ng-click="filters()">Filter</button>
+                <div ng-show="showMe">
+                <input  type="text" ng-model="yuva" placeholder="search for everything...."  ng-change="">
+
+                </div>
+        </div>
+                   <div class="col-md-5">
+                        <table class="table">
+                                <thead>
+                                        <tr>
+                                                <th>Names</th>
+                                                <th>country</th>
+                                                <th>Email</th>
+                                        </tr>
+                                </thead>
+                                <tbody>
+                                        <tr ng-repeat="name in names | filter:yuva">
+                                                
+                                                        <td style="color:darkgreen" >{{name.key}}</td>
+                                                        <td style="color:darkgreen">{{name.value}}</td>
+                                                        <td style="color:darkgreen">{{name.Email}}</td>
+
+                                        </tr>
+                                        <h3 ng-show="names.length === 0" style="color:red">{{error}}</h3>
+
+                                </tbody>
+                        </table>
+                </div> 
+</div>
+
+
+
+<div ui-view></div>
+</div>
+
+
+<style>
+        .homepage .home {
+                color: lightslategray;
+                font-size: 20px;
+        }
+
+        .homepage .start {
+                color: green;
+                font-size: 20px;
+        }
+
+        .homepage .subjects {
+                color: darkblue;
+                font-size: 20px;
+
+        }
+
+        .homepage .header {
+                background-color: lightgray;
+                height: 44px;
+        }
+
+        .homepage .header button {
+                padding: 4px 18px;
+                margin: 5px -2px;
+        }
+
+        .homepage .header .exam {
+                margin: 5px 0px;
+        }
+        .homepage .example{
+                background-color: #ec971f;
+                border-color: #eb9316;
+                color: white;
+        }
+        .homepage .addbtn{
+                background-color: #008000;
+                border-color: #008000;
+                color: white;
+        }
+        .homepage .removebtn{
+                background-color: red;
+                border-color: red;
+                color: white;
+        }
+        .homepage .removeitem{
+                background-color: lightgray;
+                border-color: lightgray;
+                color: white;
+        }
+</style>

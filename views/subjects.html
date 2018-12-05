@@ -1,0 +1,50 @@
+<div ng-controller="myCtrl">
+  <div style="color:green">
+    <p><b>This is table for subjects:</b></p>
+  </div>
+  <div class="col-md-12">
+    <input type="text" ng-model="test.id" placeholder="enter id">
+    <input type="text" ng-model="test.name" placeholder="enter subjects">
+  </div>
+  
+  <div class="col-md-12">
+   
+    
+    <div class="col-md-6" style=" border: 2px solid green;">
+      
+      <table class="table">
+        <thead>
+          <tr style="color: cornflowerblue;">
+            <th ng-click="sort('id')">ID
+              <span ng-show="sortKey=='id'" ng-class="{'fa fa-angle-up':reverse,'fa fa-angle-down':!reverse}"></span>
+            </th>
+            <th ng-click="sort('name')">subject 
+            <span ng-show="sortKey=='name'" ng-class="{'fa fa-angle-up':reverse,'fa fa-angle-down':!reverse}"></span>
+            <th ng-click="sort('flag')">flag
+              <span ng-show="sortKey=='flag'" ng-class="{'fa fa-angle-up':reverse,'fa-angle-down':!reverse}"></span>
+            </th>
+          </tr>
+        </thead>
+        <tbody data-ng-repeat="subject in subjects | filter:test | orderBy:sortKey:reverse">
+          <tr> 
+            <td>{{subject.id}}</td>
+            <td>{{subject.name}}</td>
+            <td>{{subject.flag}}</td>
+          </tr>
+          <br>
+          <br>
+        </tbody>
+      </table>
+
+    </div>
+    <div class="col-md-6">
+      <!-- <input type="text" placeholder="enter subjects.." ng-model="test" >
+      <button onclick="sortList()">Sort</button> -->
+    </div>
+    <div style="color:crimson;"><button type="button" style="margin: 13px 14px;" ui-sref="home">Back</button></div>
+  </div>
+
+  <br>
+  <br>
+  <br>
+</div>
